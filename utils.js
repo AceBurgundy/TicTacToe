@@ -23,3 +23,5 @@ export function changeSpanColors(elements) {
         changeSpanColors(elements);
     }, 300);
 }
+
+export const getById = tag => document.getElementById(tag);

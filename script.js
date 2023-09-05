@@ -1,5 +1,5 @@
 import { initial_state, minimax, player, terminal, winner } from "./tictactoe.js";
-import { changeSpanColors } from "./utils.js";
+import { changeSpanColors, getById } from "./utils.js";
 
 const spanElements = document.querySelectorAll('#tictactoe span')
 const AIspanElements = document.querySelectorAll('#AI span')
@@ -7,10 +7,23 @@ const AIspanElements = document.querySelectorAll('#AI span')
 changeSpanColors(spanElements)
 changeSpanColors(AIspanElements)
 
+function handleOrientationChange(mediaQueryList) {
+    if (mediaQueryList.matches) {
+        spanElements.forEach((span, index) => {
+            if (index === 2 || index === 5) {
+                span.insertAdjacentHTML("afterend", "<br>")
+            }
+        })
+    }
+}
+
+const portraitMediaQuery = window.matchMedia("(orientation: portrait)");
+
+portraitMediaQuery.addEventListener("change", handleOrientationChange);
+handleOrientationChange(portraitMediaQuery);
+
 const X = "X";
 const O = "O";
-
-const getById = tag => document.getElementById(tag);
 
 const boardElement = getById("board");
 
@@ -27,16 +40,19 @@ const cell = (value, coordinates) => {
 
 function showWinner(playerName) {
 
+    const playerNameElement = getById("player-name")
+
     let playerNameMessage = playerName
     let playerWinningStatus = ""
     
     if (playerNameMessage === undefined) {
         playerNameMessage = "Tie"
+        playerNameElement.style.fontSize = "5rem"
     } else {
         playerWinningStatus = "Wins"
     }
 
-    getById("player-name").textContent = playerNameMessage
+    playerNameElement.textContent = playerNameMessage
     getById("winning-type").textContent = playerWinningStatus
 
     getById("winner").classList.add("active")
