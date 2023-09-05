@@ -126,6 +126,12 @@ body {
     #winner-child {
         width: 90%;
     }
+
+    #winner-child {
+        box-sizing: border-box;
+        padding: 1rem;
+    }
+    
 }
 
 .cell {
