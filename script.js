@@ -1,4 +1,11 @@
 import { initial_state, minimax, player, terminal, winner } from "./tictactoe.js";
+import { changeSpanColors } from "./utils.js";
+
+const spanElements = document.querySelectorAll('#tictactoe span')
+const AIspanElements = document.querySelectorAll('#AI span')
+
+changeSpanColors(spanElements)
+changeSpanColors(AIspanElements)
 
 const X = "X";
 const O = "O";
@@ -107,9 +114,9 @@ boardElement.onclick = event => {
 	const { target } = event
 	const cell = getById(target.id)
 	const cellValue = cell.innerHTML.trim()
-	const currentPlayer = player(board)
+	const currentPlayer = player(getBoard())
 
-	if (cellValue === "") {
+    if (cellValue === "") {
 		cell.innerHTML = currentPlayer
 
 		const board = getBoard()
