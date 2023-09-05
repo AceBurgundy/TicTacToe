@@ -72,7 +72,7 @@ window.onclick = event => {
         getById("menu").classList.add("close")
         getById("winner").classList.remove("active")
         setTimeout(() => {
-            aICell.innerHTML = O
+            aICell.innerHTML = X
         }, 500)
     }
 
