@@ -10,7 +10,7 @@ changeSpanColors(AIspanElements)
 function handleOrientationChange(mediaQueryList) {
     if (mediaQueryList.matches) {
         spanElements.forEach((span, index) => {
-            if (index === 2 || index === 5) {
+            if (index === 2 || index === 5 && span.nextSibling.nodeName !== "BR") {
                 span.insertAdjacentHTML("afterend", "<br>")
             }
         })
