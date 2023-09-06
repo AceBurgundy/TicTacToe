@@ -21,6 +21,14 @@ body {
     align-items: center;
 }
 
+#cs50 {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    margin: 10px;
+    z-index: 10;
+}
+
 #board {
     width: 45%;
     background-color: rgb(0, 0, 0);
@@ -141,6 +149,15 @@ span {
         width: 95%;
     }
 
+    #cs50 {
+        font-size: 0.65rem;
+        margin: 0;
+        margin-top: 5px;
+        left: 50%;
+        width: max-content;
+        transform: translateX(-50%);
+    }
+    
     #menu {
         font-size: 20vw;
     }
